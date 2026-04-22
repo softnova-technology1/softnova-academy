@@ -1,0 +1,44 @@
+.page {
+  /* background:
+    radial-gradient(900px 450px at 12% 10%, rgba(74, 115, 255, 0.18), transparent 55%),
+    radial-gradient(700px 400px at 88% 22%, rgba(255, 191, 105, 0.20), transparent 56%),
+    linear-gradient(180deg, #f6f7fb 0%, #f2f4f8 55%, #eef1f7 100%); */
+  min-height: 100vh;
+}
+
+.hero {
+  padding: clamp(2.25rem, 3vw, 3.5rem) 5% 0;
+}
+
+.heroInner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.25rem 1.25rem 1.5rem;
+  border-radius: 22px;
+  background: rgba(246, 247, 251, 0.6);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    18px 18px 40px rgba(16, 24, 40, 0.10),
+    -14px -14px 34px rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.title {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.55rem, 2.2vw, 2.15rem);
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 70ch;
+  color: rgba(15, 23, 42, 0.72);
+  line-height: 1.65;
+  font-size: 0.98rem;
+}
+
+.main {
+  padding: clamp(1.25rem, 2vw, 2rem) 5% clamp(3rem, 5vw, 5rem);
+}
+
