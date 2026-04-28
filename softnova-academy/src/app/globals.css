@@ -1,10 +1,38 @@
 :root {
-  --background: #ffffff;
-  --foreground: #121212;
-  --primary: rgb(230, 81, 0);
-  --secondary: #fb8c00;
-  --nav-bg: rgba(255, 255, 255, 0.85);
-  --border: rgba(0, 0, 0, 0.08);
+  --background: #FAF5F2; /* Soft off-white with orange hint */
+  --foreground: #4A3E36;
+  --primary: #FF7C30;
+  --secondary: #FFA375;
+  --white: #FFFFFF;
+  
+  /* Neumorphic shadows for LIGHT background */
+  --shadow-light: #FFFFFF;
+  --shadow-dark: rgba(210, 185, 165, 0.6);
+
+  --neumorph-shadow: 
+    12px 12px 24px var(--shadow-dark), 
+    -12px -12px 24px var(--shadow-light);
+    
+  --neumorph-shadow-sm: 
+    6px 6px 12px var(--shadow-dark), 
+    -6px -6px 12px var(--shadow-light);
+    
+  --neumorph-shadow-lg: 
+    20px 20px 40px var(--shadow-dark), 
+    -20px -20px 40px var(--shadow-light);
+  
+  --neumorph-inset: 
+    inset 8px 8px 16px var(--shadow-dark), 
+    inset -8px -8px 16px var(--shadow-light);
+
+  --neumorph-inset-sm: 
+    inset 4px 4px 8px var(--shadow-dark), 
+    inset -4px -4px 8px var(--shadow-light);
+    
+  --radius-lg: 60px;
+  --radius-md: 40px;
+  --radius-sm: 25px;
+  --radius-pill: 100px;
 }
 
 * {
@@ -20,20 +48,6 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
-}
-
-/* Subtle accent glows for light mode */
-body::before {
-  content: '';
-  position: fixed;
-  top: -10%;
-  left: -10%;
-  width: 120%;
-  height: 120%;
-  background: radial-gradient(circle at 10% 10%, rgba(230, 81, 0, 0.03) 0%, transparent 40%),
-              radial-gradient(circle at 90% 90%, rgba(251, 140, 0, 0.03) 0%, transparent 40%);
-  pointer-events: none;
-  z-index: -1;
 }
 
 a {

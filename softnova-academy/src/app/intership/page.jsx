@@ -1,10 +1,10 @@
-export default function IntershipPage() {
-  return (
-    <div style={{ padding: '2rem 5%' }}>
-      <h1 style={{ marginBottom: '0.75rem' }}>Intership</h1>
-      <p style={{ color: '#555', maxWidth: 900, lineHeight: 1.7 }}>
-        This is the Intership page.
-      </p>
-    </div>
-  );
+import InternshipPage from "./ui/InternshipPage";
+
+export const metadata = {
+  title: "Internship | Softnova Academy",
+  description: "Join Softnova Academy's intensive internship programs in Web Design, UI/UX, and Front-End Development to kickstart your tech career.",
+};
+
+export default function Page() {
+  return <InternshipPage />;
 }

@@ -62,11 +62,9 @@ const Navbar = () => {
           </div>
 
           <div className={styles.navActions}>
-            <Link href="/book" className={styles.ctaButton}>
-              Enroll Now
-            </Link>
+           
             {/* Mobile Toggle */}
-            <button className={styles.mobileToggle} onClick={toggleMenu} aria-label="Toggle Menu">
+            <button className={styles.mobileToggle} onClick={toggleMenu} aria-label="Toggle Menu" suppressHydrationWarning>
               <div className={`${styles.hamburger} ${isOpen ? styles.hamburgerOpen : ''}`}>
                 <span></span>
                 <span></span>
