@@ -1,0 +1,288 @@
+.page {
+  background: var(--background);
+  min-height: 100vh;
+}
+
+.main {
+  padding: 60px 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* =========================================
+   NEUMORPHIC HERO SECTION
+   ========================================= */
+.productHero {
+  position: relative;
+  padding: 80px 5% 40px;
+  min-height: auto;
+  background: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.topYellowBg {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  height: 60%;
+  background: var(--background);
+  border-radius: var(--radius-lg);
+  z-index: 1;
+  box-shadow: var(--neumorph-inset);
+}
+
+.mainTitleUpper {
+  position: absolute;
+  top: 140px;
+  width: 100%;
+  text-align: center;
+  font-size: clamp(3rem, 6vw, 6.5rem);
+  font-weight: 900;
+  color: var(--primary);
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  z-index: 2;
+  text-shadow: 4px 4px 0px var(--white), 8px 8px 15px rgba(255, 124, 48, 0.2);
+}
+
+/* CLAYMORPHIC CARD */
+.glassCard {
+  position: relative;
+  width: 100%;
+  max-width: 1250px;
+  background: var(--background);
+  border-radius: var(--radius-lg);
+  z-index: 10;
+  margin-top: 120px;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1fr;
+  padding: 90px 70px;
+  box-shadow: var(--neumorph-shadow-lg);
+  gap: 50px;
+  align-items: center;
+}
+
+.academyTitle {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--foreground);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: var(--foreground);
+  opacity: 0.8;
+  line-height: 1.7;
+  margin-bottom: 35px;
+}
+
+/* 2ND IMAGE STYLE ICONS */
+.miniThumbnails {
+  display: flex;
+  gap: 25px;
+}
+
+.miniBox {
+  width: 85px;
+  height: 85px;
+  background: var(--background);
+  border-radius: 50%; /* Circle like 2nd image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  box-shadow: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light); /* Puffler puff */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  position: relative;
+}
+
+.miniBox::after {
+  content: '';
+  position: absolute;
+  inset: 15px;
+  border-radius: 50%;
+  background: var(--white);
+  opacity: 0.1;
+  box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+}
+
+.miniBox:hover {
+  transform: scale(1.1);
+  box-shadow: 15px 15px 30px var(--shadow-dark), -15px -15px 30px var(--shadow-light);
+}
+
+/* CENTER SECTION */
+.cardCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.imageCircle {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--neumorph-inset);
+}
+
+.learningImg {
+  width: 100%;
+  height: auto;
+  z-index: 2;
+  /* Masking/Removing background feel */
+  mix-blend-mode: multiply; 
+  filter: contrast(1.1);
+  transition: transform 0.5s ease;
+}
+
+.priceTag {
+  margin-top: -30px;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--primary);
+  background: var(--white);
+  padding: 15px 40px;
+  border-radius: 40px;
+  box-shadow: var(--neumorph-shadow-sm);
+  z-index: 3;
+}
+
+/* RIGHT SECTION */
+.cardRight {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+}
+
+.techStackContainer {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.techOrbit {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  box-shadow: var(--neumorph-inset-sm);
+}
+
+.orbitItem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 75px;
+  height: 75px;
+  background: var(--background);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.2rem;
+  box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+  transform: translate(-50%, -50%) rotate(calc(var(--i) * (360deg / 5))) translate(110px) rotate(calc(var(--i) * (-360deg / 5)));
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.joinBtn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 25px 60px;
+  border-radius: var(--radius-pill);
+  font-size: 1.3rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 10px 10px 25px rgba(255, 124, 48, 0.4), -10px -10px 25px var(--white);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.joinBtn:hover {
+  transform: translateY(-5px);
+  box-shadow: 15px 15px 35px rgba(255, 124, 48, 0.5), -15px -15px 35px var(--white);
+}
+
+/* CARDS SECTION ICONS */
+.cardsSection {
+  max-width: 1300px;
+  margin: 30px auto 60px;
+  text-align: center;
+  padding: 0 5%;
+}
+
+.cardsTitle {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--foreground);
+  margin-bottom: 80px;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.featureCard {
+  background: var(--background);
+  border-radius: var(--radius-md);
+  padding: 60px 30px;
+  box-shadow: var(--neumorph-shadow);
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.cardIconRow {
+  width: 90px;
+  height: 90px;
+  background: var(--background);
+  border-radius: 50%; /* Circle like ref image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  box-shadow: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.cardIconRow::after {
+  content: '';
+  position: absolute;
+  inset: 15px;
+  border-radius: 50%;
+  box-shadow: inset 5px 5px 10px var(--shadow-dark), inset -5px -5px 10px var(--shadow-light);
+}
+
+@media (max-width: 1200px) {
+  .glassCard {
+    grid-template-columns: 1fr;
+    padding: 60px 40px;
+  }
+}

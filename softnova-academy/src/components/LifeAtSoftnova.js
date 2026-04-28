@@ -1,0 +1,150 @@
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import { Play, X } from 'lucide-react';
+import styles from './LifeAtSoftnova.module.css';
+
+const galleryItems = [
+  { 
+    id: 1, 
+    src: '/about/gallery_life_1.png', 
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-his-laptop-34448-large.mp4',
+    delay: 0.1 
+  },
+  { 
+    id: 2, 
+    src: '/about/gallery_life_2.png', 
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-young-woman-working-on-a-laptop-in-a-library-41009-large.mp4',
+    delay: 0.2 
+  },
+  { 
+    id: 3, 
+    src: '/about/gallery_life_3.png', 
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-teamwork-in-a-modern-office-42502-large.mp4',
+    delay: 0.3 
+  },
+  { 
+    id: 4, 
+    src: '/about/gallery_life_4.png', 
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-man-working-on-a-laptop-in-a-coffee-shop-42284-large.mp4',
+    delay: 0.4 
+  },
+];
+
+const LifeAtSoftnova = () => {
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
+  return (
+    <section className={styles.lifeSection}>
+      <div className={styles.container}>
+        <div className={styles.contentGrid}>
+          {/* Left Side Content */}
+          <motion.div 
+            className={styles.textContent}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className={styles.title}>
+              DISCOVER AND<br />
+              EXPERIENCE LIFE AT<br />
+              SOFTNOVA
+            </h1>
+            
+            <div className={styles.subTextWrapper}>
+              <motion.div 
+                className={styles.playIconCircle}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setSelectedVideo(galleryItems[0].videoUrl)}
+              >
+                <Play fill="white" size={20} />
+              </motion.div>
+              <span className={styles.subTitle}>choose your growth journey</span>
+            </div>
+
+            <p className={styles.description}>
+              Softnova Academy is more than just a learning center; it's a vibrant ecosystem where innovation meets passion. 
+              Our campus is designed to inspire creativity, foster collaboration, and provide the perfect environment for 
+              future tech leaders to thrive and build groundbreaking solutions.
+            </p>
+          </motion.div>
+
+          {/* Right Side Gallery */}
+          <div className={styles.galleryGrid}>
+            {galleryItems.map((item) => (
+              <motion.div
+                key={item.id}
+                className={styles.galleryCard}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: item.delay }}
+                whileHover={{ y: -10 }}
+                onClick={() => setSelectedVideo(item.videoUrl)}
+              >
+                <Image
+                  src={item.src}
+                  alt={`Life at Softnova ${item.id}`}
+                  fill
+                  className={styles.galleryImage}
+                />
+                <div className={styles.cardOverlay}>
+                  <div className={styles.miniPlayBtn}>
+                    <Play fill="white" size={14} />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Wavy Divider at bottom */}
+      <div className={styles.waveDivider}>
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C58.47,113.1,121.73,103.52,183.63,89.69,228.69,79.54,273,65.41,321.39,56.44Z" className={styles.waveFill}></path>
+        </svg>
+      </div>
+
+      {/* Video Modal */}
+      <AnimatePresence>
+        {selectedVideo && (
+          <motion.div 
+            className={styles.modalOverlay}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedVideo(null)}
+          >
+            <motion.div 
+              className={styles.modalContent}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button 
+                className={styles.closeBtn}
+                onClick={() => setSelectedVideo(null)}
+              >
+                <X size={30} />
+              </button>
+              <div className={styles.videoWrapper}>
+                <video 
+                  src={selectedVideo} 
+                  controls 
+                  autoPlay 
+                  className={styles.videoPlayer}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
+};
+
+export default LifeAtSoftnova;

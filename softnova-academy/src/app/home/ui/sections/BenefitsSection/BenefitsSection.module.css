@@ -1,0 +1,98 @@
+.section {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 80px 5%;
+  background: var(--background);
+}
+
+.header {
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.heading {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--primary);
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+}
+
+.lead {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  color: var(--foreground);
+  opacity: 0.8;
+  line-height: 1.8;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+}
+
+.card {
+  position: relative;
+  padding: 100px 40px 60px;
+  background: var(--background);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--neumorph-shadow);
+  transition: all 0.4s ease;
+  text-align: left;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--neumorph-shadow-lg);
+}
+
+.iconCircle {
+  position: absolute;
+  top: -50px;
+  left: 40px;
+  width: 110px;
+  height: 110px;
+  background: var(--background);
+  border-radius: 50%; /* Pure Circle puff */
+  box-shadow: 12px 12px 25px var(--shadow-dark), -12px -12px 25px var(--shadow-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconInner {
+  width: 80px;
+  height: 80px;
+  background: var(--background);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  color: var(--primary);
+  box-shadow: inset 8px 8px 15px var(--shadow-dark), inset -8px -8px 15px var(--shadow-light);
+}
+
+.cardTitle {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--foreground);
+  margin-bottom: 15px;
+}
+
+.cardDesc {
+  font-size: 1.1rem;
+  color: var(--foreground);
+  opacity: 0.75;
+  line-height: 1.7;
+}
+
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+}

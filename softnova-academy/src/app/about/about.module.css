@@ -1,0 +1,328 @@
+:root {
+  --primary: rgb(230, 81, 0);
+  /* --bg: #e0e5ec; */
+  --light-shadow: #ffffff;
+  --dark-shadow: #a3b1c6;
+  --text-main: #2d3436;
+  --text-muted: #636e72;
+}
+
+.aboutPage {
+  background-color: var(--bg);
+  color: var(--text-main);
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Scroll Progress */
+.scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary);
+  transform-origin: 0%;
+  z-index: 1000;
+}
+
+/* Common Section */
+.section {
+  padding: 100px 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 4rem;
+  text-align: center;
+  position: relative;
+  width: 100%;
+}
+
+/* Neumorphic Card Base */
+.neuCard {
+  background: var(--bg);
+  border-radius: 30px;
+  box-shadow: 9px 9px 16px var(--dark-shadow), -9px -9px 16px var(--light-shadow);
+  padding: 2.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.neuCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 12px 12px 24px var(--dark-shadow), -12px -12px 24px var(--light-shadow);
+}
+
+.glassCard {
+  background: var(--bg);
+  border-radius: 30px;
+  box-shadow: 9px 9px 16px var(--dark-shadow), -9px -9px 16px var(--light-shadow);
+  padding: 3rem;
+  transition: all 0.3s ease;
+}
+
+.glassCard:hover {
+  transform: scale(0.98);
+  box-shadow: inset 6px 6px 12px var(--dark-shadow), inset -6px -6px 12px var(--light-shadow);
+}
+
+/* Hero Section */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 10%;
+  background: var(--bg);
+}
+
+.heroHeading {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+}
+
+.heroSubtext {
+  font-size: 1.3rem;
+  color: var(--text-muted);
+  max-width: 800px;
+  margin-bottom: 3rem;
+}
+
+.ctaButton {
+  padding: 1.3rem 3.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--bg);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 8px 8px 16px var(--dark-shadow), -8px -8px 16px var(--light-shadow);
+  transition: all 0.3s ease;
+}
+
+.ctaButton:hover {
+  transform: scale(0.98);
+  box-shadow: inset 4px 4px 8px var(--dark-shadow), inset -4px -4px 8px var(--light-shadow);
+}
+
+.ctaButton:active {
+  box-shadow: inset 4px 4px 8px var(--dark-shadow), inset -4px -4px 8px var(--light-shadow);
+}
+
+/* About Split */
+.aboutSplit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.aboutImageWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(20px 20px 30px var(--dark-shadow)) drop-shadow(-20px -20px 30px var(--light-shadow));
+}
+
+.aboutImage, .aboutVideo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/10;
+  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+  object-fit: cover;
+  transition: all 0.5s ease;
+  border-radius: 20px;
+}
+
+.aboutImageWrapper:hover .aboutImage,
+.aboutImageWrapper:hover .aboutVideo {
+  clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 10% 100%);
+}
+
+.aboutText h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+
+.aboutText p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* Feature Cards (Why Choose Us) */
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+}
+
+.featureCard {
+  background: var(--bg);
+  border-radius: 35px;
+  padding: 3.5rem 2rem;
+  text-align: center;
+  box-shadow: 9px 9px 16px var(--dark-shadow), -9px -9px 16px var(--light-shadow);
+  transition: all 0.3s;
+}
+
+.featureCard:hover {
+  box-shadow: inset 6px 6px 12px var(--dark-shadow), inset -6px -6px 12px var(--light-shadow);
+}
+
+.iconWrapper {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--bg);
+  margin: 0 auto 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  box-shadow: 4px 4px 8px var(--dark-shadow), -4px -4px 8px var(--light-shadow);
+}
+
+/* Stats Section */
+.statsSection {
+  padding: 100px 0;
+  background: var(--bg);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 4rem;
+  padding: 0 5%;
+}
+
+.statItem {
+  background: var(--bg);
+  padding: 3rem 2rem;
+  border-radius: 30px;
+  box-shadow: 8px 8px 16px var(--dark-shadow), -8px -8px 16px var(--light-shadow);
+  transition: all 0.3s ease;
+}
+
+.statItem:hover {
+  transform: scale(0.98);
+  box-shadow: inset 6px 6px 12px var(--dark-shadow), inset -6px -6px 12px var(--light-shadow);
+}
+
+.statItem h3 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Team Section */
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+}
+
+.teamCard {
+  background: var(--bg);
+  padding: 1.5rem;
+  border-radius: 35px;
+  box-shadow: 9px 9px 16px var(--dark-shadow), -9px -9px 16px var(--light-shadow);
+  transition: all 0.3s ease;
+}
+
+.teamCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 15px 15px 30px var(--dark-shadow), -15px -15px 30px var(--light-shadow);
+}
+
+.teamImage {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  box-shadow: 4px 4px 8px var(--dark-shadow), -4px -4px 8px var(--light-shadow);
+}
+
+.teamCard:hover .teamImage {
+  transform: scale(1.1);
+}
+
+.teamInfo {
+  padding: 1.5rem 1rem 0.5rem;
+  text-align: center;
+}
+
+.teamInfo h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Vision Mission */
+.visionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+/* Gallery */
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.galleryItem {
+  padding: 1rem;
+  background: var(--bg);
+  border-radius: 30px;
+  box-shadow: 8px 8px 16px var(--dark-shadow), -8px -8px 16px var(--light-shadow);
+}
+
+.galleryItem img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: inset 4px 4px 8px var(--dark-shadow), inset -4px -4px 8px var(--light-shadow);
+}
+
+/* CTA Footer */
+.ctaFooter {
+  background: var(--bg);
+  margin: 100px 5%;
+  padding: 8rem 2rem;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 15px 15px 30px var(--dark-shadow), -15px -15px 30px var(--light-shadow);
+}
+
+.ctaFooter h2 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .aboutSplit, .visionGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .heroHeading {
+    font-size: 3.5rem;
+  }
+}
