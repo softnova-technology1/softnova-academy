@@ -60,7 +60,7 @@ const Footer = () => {
               <li><Link href="/#achievements">Achievement</Link></li>
               <li><Link href="/#about">Our Goals</Link></li>
               <li><Link href="/intership">Internship</Link></li>
-              <li><Link href="/contact-us">Contact Us</Link></li>
+              <li><Link href="/contact us">Contact Us</Link></li>
             </ul>
           </div>
 

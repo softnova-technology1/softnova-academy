@@ -1,11 +1,5 @@
 :root {
-  --background:#faf5f2;
-  --foreground: #121212;
-  --primary: rgb(230, 81, 0);
-  --secondary: #fb8c00;
-  --nav-bg: rgba(255, 255, 255, 0.85);
-  --border: rgba(0, 0, 0, 0.08);
-  --background: #FAF5F2; /* Soft off-white with orange hint */
+  --background: #e3d4cc; /* Soft off-white with orange hint */
   --foreground: #4A3E36;
   --primary: #FF7C30;
   --secondary: #FFA375;

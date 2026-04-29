@@ -13,15 +13,8 @@ import {
   ArrowRight
 } from "lucide-react";
 import styles from "./contact.module.css";
-import PhoneIcon from '@mui/icons-material/Phone';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import WhatsappIcon from '@mui/icons-material/WhatsApp';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import InstagramIcon from '@mui/icons-material/Instagram';
-// Reusing our custom icons for brand consistency if needed, 
-// but using lucide-react for standard contact icons.
-import { Github, Twitter, Linkedin, Instagram } from "../../components/Icons";
+// Reusing our custom icons for brand consistency and to avoid lucide version issues
+import { Github, Twitter, Linkedin, Instagram, Facebook } from "../../components/Icons";
 
 const ContactUsPage = () => {
   const [formData, setFormData] = useState({
@@ -279,7 +272,7 @@ const ContactUsPage = () => {
               rel="noopener noreferrer"
               aria-label="Visit our Facebook page"
             >
-              <FacebookIcon className={styles.svgsicons} />
+              <Facebook className={styles.svgsicons} />
             </a>
             <a
               href="https://api.whatsapp.com/send/?phone=6385118083&text&type=phone_number&app_absent=0"
@@ -287,7 +280,7 @@ const ContactUsPage = () => {
               rel="noopener noreferrer"
               aria-label="Visit our Whatsapp page"
             >
-              <WhatsappIcon className={styles.svgsicons} />
+              <MessageSquare className={styles.svgsicons} />
             </a>
             <a
               href="https://www.linkedin.com/company/softnovatechnology/"
@@ -295,7 +288,7 @@ const ContactUsPage = () => {
               rel="noopener noreferrer"
               aria-label="Visit our LinkedIn page"
             >
-              <LinkedInIcon className={styles.svgsicons} />
+              <Linkedin className={styles.svgsicons} />
             </a>
             <a
               href="https://www.instagram.com/softnovatech/?igsh=bjZhdzduOWVqMDlz"
@@ -303,7 +296,7 @@ const ContactUsPage = () => {
               rel="noopener noreferrer"
               aria-label="Visit our Instagram page"
             >
-              <InstagramIcon className={styles.svgsicons} />
+              <Instagram className={styles.svgsicons} />
             </a>
           </div>
         </section>

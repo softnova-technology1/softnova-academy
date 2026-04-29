@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
-
+import { motion } from "framer-motion";
 import { Target, Lightbulb } from "lucide-react";
 import styles from "./about.module.css";
+
 import AboutHero from "../../components/AboutHero";
 import AboutCards from "../../components/AboutCards";
 import Stats from "../../components/Stats";
@@ -17,7 +17,6 @@ const AboutPage = () => {
 
   return (
     <main className={styles.aboutPage}>
-
       {/* 1. Hero Section */}
       <AboutHero />
 
@@ -26,7 +25,7 @@ const AboutPage = () => {
       <div className={styles.blob2}></div>
       <div className={styles.blob3}></div>
 
-      {/* 2. About Softnova (Split Layout in Neumorphic Box) */}
+      {/* 2. About Softnova */}
       <section className={styles.section}>
         <div className={styles.aboutContainer}>
           <div className={styles.aboutSplit}>
@@ -111,9 +110,8 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* 7. Life at Softnova (Premium Section) */}
+      {/* 7. Life at Softnova */}
       <LifeAtSoftnova />
-
 
       {/* 8. CTA Section */}
       <motion.section
@@ -125,7 +123,7 @@ const AboutPage = () => {
       >
         <div className={styles.glow} />
         <h2 style={{ position: "relative", zIndex: 1 }}>Start Your Career Today</h2>
-        <p style={{ fontSize: "1.2rem", marginBottom: "2.5rem", position: "relative", zIndex: 1,  }}>
+        <p style={{ fontSize: "1.2rem", marginBottom: "2.5rem", position: "relative", zIndex: 1 }}>
           Join the ranks of top-tier developers. The future is waiting for you.
         </p>
         <motion.button
