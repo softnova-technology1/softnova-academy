@@ -1,8 +1,24 @@
 .section {
-  padding: 120px 0;
+  padding: 60px 0;
   background: var(--background);
   min-height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Liquid Blobs */
+.blob1, .blob2, .blob3 {
+  position: absolute;
+  filter: blur(150px);
+  z-index: 0;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.blob1 { width: 600px; height: 600px;  top: 10%; left: -15%; border-radius: 50%; }
+.blob2 { width: 500px; height: 500px; background: var(--secondary); bottom: 10%; right: -10%; border-radius: 50%; }
+.blob3 { width: 400px; height: 400px; background: var(--primary); top: 50%; left: 10%; border-radius: 50%; }
+
 
 .container {
   max-width: 1500px;
@@ -10,29 +26,47 @@
   padding: 0 5%;
 }
 
-.header {
+.hero {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 5% 60px;
+  background: var(--background);
+  position: relative;
+}
+
+.heroCard {
+  width: 100%;
+  max-width: 1200px;
+  background: var(--background);
+  border-radius: var(--radius-lg);
+  padding: 80px 60px;
+  box-shadow: var(--neumorph-shadow-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  max-width: 900px;
-  margin: 0 auto 100px;
+  position: relative;
+  z-index: 10;
+  gap: 30px;
 }
 
 .heading {
-  font-size: 5rem;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 900;
+  line-height: 1.1;
   color: var(--foreground);
-  margin-bottom: 30px;
-  letter-spacing: -3px;
   text-transform: uppercase;
-  background: linear-gradient(to bottom, var(--foreground), var(--primary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  letter-spacing: -1px;
 }
 
 .description {
-  font-size: 1.25rem;
-  line-height: 1.8;
+  font-size: 1.2rem;
   color: var(--foreground);
   opacity: 0.8;
+  max-width: 800px;
+  line-height: 1.6;
 }
 
 .grid {

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
+import Link from "next/link";
 import { 
   MapPin, 
   Mail, 
@@ -49,26 +50,32 @@ const ContactUsPage = () => {
 
   return (
     <main className={styles.contactPage}>
+      {/* Background Blobs */}
+      <div className={styles.blob1}></div>
+      <div className={styles.blob2}></div>
+      <div className={styles.blob3}></div>
 
       <div className={styles.container}>
         {/* 1. HERO SECTION */}
         <section className={styles.hero}>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Let’s Build Your <br />
-            <span style={{ color: "var(--primary)" }}>Future Together</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
-          >
-            Have a question or ready to start your tech journey? 
-            Our team is here to help you navigate your way to success.
-          </motion.p>
+          <div className={styles.heroCard}>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              Let’s Build Your <br />
+              <span style={{ color: "var(--primary)" }}>Future Together</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
+            >
+              Have a question or ready to start your tech journey? 
+              Our team is here to help you navigate your way to success.
+            </motion.p>
+          </div>
         </section>
 
         {/* 2. CONTACT CARDS */}
@@ -311,13 +318,15 @@ const ContactUsPage = () => {
             <p style={{ marginBottom: "3rem", fontSize: "1.2rem", opacity: 0.9 }}>
               Book a free demo class and experience our teaching style firsthand.
             </p>
-            <motion.button 
-              className={styles.ctaBtn}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              Book Free Demo <ArrowRight size={20} style={{ marginLeft: "10px", verticalAlign: "middle" }} />
-            </motion.button>
+            <Link href="/book">
+              <motion.button 
+                className={styles.ctaBtn}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                Book Free Demo <ArrowRight size={20} style={{ marginLeft: "10px", verticalAlign: "middle" }} />
+              </motion.button>
+            </Link>
           </motion.div>
         </section>
 

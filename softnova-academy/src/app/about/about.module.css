@@ -1,17 +1,45 @@
-:root {
-  --primary: rgb(230, 81, 0);
-  /* --bg: #e0e5ec; */
-  --light-shadow: #ffffff;
-  --dark-shadow: #a3b1c6;
-  --text-main: #2d3436;
-  --text-muted: #636e72;
-}
-
 .aboutPage {
-  background-color: var(--bg);
-  color: var(--text-main);
+  background-color: var(--background);
+  color: var(--foreground);
   overflow-x: hidden;
   font-family: 'Inter', sans-serif;
+  position: relative;
+}
+
+/* Liquid Blobs */
+.blob1, .blob2, .blob3 {
+  position: absolute;
+  filter: blur(100px);
+  z-index: 0;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.blob1 {
+  width: 500px;
+  height: 500px;
+  background: var(--primary);
+  top: 10%;
+  left: -10%;
+  border-radius: 50%;
+}
+
+.blob2 {
+  width: 400px;
+  height: 400px;
+  background: var(--secondary);
+  bottom: 20%;
+  right: -5%;
+  border-radius: 50%;
+}
+
+.blob3 {
+  width: 300px;
+  height: 300px;
+  background: var(--primary);
+  top: 50%;
+  left: 30%;
+  border-radius: 50%;
 }
 
 /* Scroll Progress */
@@ -44,9 +72,9 @@
 
 /* Neumorphic Card Base */
 .neuCard {
-  background: var(--bg);
-  border-radius: 30px;
-  box-shadow: 9px 9px 16px var(--dark-shadow), -9px -9px 16px var(--light-shadow);
+  background: var(--background);
+  border-radius: var(--radius-md);
+  box-shadow: var(--neumorph-shadow);
   padding: 2.5rem;
   transition: all 0.3s ease;
   border: 1px solid rgba(255,255,255,0.2);
@@ -54,73 +82,124 @@
 
 .neuCard:hover {
   transform: translateY(-5px);
-  box-shadow: 12px 12px 24px var(--dark-shadow), -12px -12px 24px var(--light-shadow);
+  box-shadow: var(--neumorph-shadow-lg);
 }
 
 .glassCard {
-  background: var(--bg);
-  border-radius: 30px;
-  box-shadow: 9px 9px 16px var(--dark-shadow), -9px -9px 16px var(--light-shadow);
+  background: var(--background);
+  border-radius: var(--radius-md);
+  box-shadow: var(--neumorph-shadow);
   padding: 3rem;
   transition: all 0.3s ease;
 }
 
 .glassCard:hover {
   transform: scale(0.98);
-  box-shadow: inset 6px 6px 12px var(--dark-shadow), inset -6px -6px 12px var(--light-shadow);
+  box-shadow: var(--neumorph-inset);
 }
 
 /* Hero Section */
 .hero {
   min-height: 90vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 120px 5% 60px;
+  background: var(--background);
+  position: relative;
+  overflow: hidden;
+}
+
+.heroCard {
+  width: 100%;
+  max-width: 1200px;
+  background: var(--background);
+  border-radius: var(--radius-lg);
+  padding: 80px 60px;
+  box-shadow: var(--neumorph-shadow-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  padding: 0 10%;
-  background: var(--bg);
+  position: relative;
+  z-index: 10;
+  gap: 30px;
 }
 
 .heroHeading {
-  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 900;
   line-height: 1.1;
-  margin-bottom: 1.5rem;
-  color: var(--text-main);
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+  color: var(--foreground);
+  text-transform: uppercase;
+  letter-spacing: -1px;
 }
 
 .heroSubtext {
-  font-size: 1.3rem;
-  color: var(--text-muted);
-  max-width: 800px;
-  margin-bottom: 3rem;
+  font-size: 1.2rem;
+  color: var(--foreground);
+  opacity: 0.8;
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+.heroMiniBoxes {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.heroMiniBox {
+  width: 60px;
+  height: 60px;
+  background: var(--background);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--neumorph-shadow-sm);
+  color: var(--primary);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.heroMiniBox:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: var(--neumorph-shadow);
 }
 
 .ctaButton {
   padding: 1.3rem 3.5rem;
   font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: 900;
   color: var(--primary);
-  background: var(--bg);
+  background: var(--background);
   border: none;
-  border-radius: 50px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
-  box-shadow: 8px 8px 16px var(--dark-shadow), -8px -8px 16px var(--light-shadow);
+  box-shadow: var(--neumorph-shadow-sm);
   transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .ctaButton:hover {
   transform: scale(0.98);
-  box-shadow: inset 4px 4px 8px var(--dark-shadow), inset -4px -4px 8px var(--light-shadow);
+  box-shadow: var(--neumorph-inset-sm);
 }
 
-.ctaButton:active {
-  box-shadow: inset 4px 4px 8px var(--dark-shadow), inset -4px -4px 8px var(--light-shadow);
+/* About Split & Container */
+.aboutContainer {
+  background: var(--background);
+  border-radius: var(--radius-lg);
+  padding: 90px 70px;
+  box-shadow: var(--neumorph-shadow-lg);
+  margin: 60px auto;
+  max-width: 1300px;
+  position: relative;
+  z-index: 10;
 }
 
-/* About Split */
 .aboutSplit {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -133,28 +212,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  filter: drop-shadow(20px 20px 30px var(--dark-shadow)) drop-shadow(-20px -20px 30px var(--light-shadow));
+  border-radius: var(--radius-md);
+  box-shadow: var(--neumorph-inset);
+  padding: 20px;
 }
 
 .aboutImage, .aboutVideo {
   width: 100%;
   height: auto;
   aspect-ratio: 16/10;
-  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+  border-radius: var(--radius-sm);
   object-fit: cover;
   transition: all 0.5s ease;
-  border-radius: 20px;
-}
-
-.aboutImageWrapper:hover .aboutImage,
-.aboutImageWrapper:hover .aboutVideo {
-  clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 10% 100%);
+  box-shadow: var(--neumorph-shadow-sm);
 }
 
 .aboutText h2 {
-  font-size: 3rem;
-  font-weight: 800;
+  font-size: 3.5rem;
+  font-weight: 900;
   margin-bottom: 2rem;
+  color: var(--foreground);
 }
 
 .aboutText p {
@@ -164,43 +241,124 @@
   margin-bottom: 1.5rem;
 }
 
-/* Feature Cards (Why Choose Us) */
+/* Innovative Bento Grid (Why Choose Us) */
 .featureGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(300px, auto);
+  gap: 2.5rem;
+  margin-top: 5rem;
 }
 
 .featureCard {
-  background: var(--bg);
-  border-radius: 35px;
-  padding: 3.5rem 2rem;
-  text-align: center;
-  box-shadow: 9px 9px 16px var(--dark-shadow), -9px -9px 16px var(--light-shadow);
-  transition: all 0.3s;
+  background: var(--background);
+  border-radius: 40px;
+  padding: 3.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--neumorph-shadow);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  z-index: 1;
+}
+
+.featureCard:nth-child(1) { grid-column: span 2; }
+.featureCard:nth-child(4) { grid-column: span 2; }
+
+.featureCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,124,48,0.05) 0%, rgba(255,255,255,0) 100%);
+  z-index: -1;
+  transition: opacity 0.5s ease;
 }
 
 .featureCard:hover {
-  box-shadow: inset 6px 6px 12px var(--dark-shadow), inset -6px -6px 12px var(--light-shadow);
+  transform: scale(1.02);
+  box-shadow: var(--neumorph-shadow-lg);
+}
+
+.featureCard:hover::before {
+  opacity: 1;
 }
 
 .iconWrapper {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: var(--bg);
-  margin: 0 auto 2rem;
+  width: 85px;
+  height: 85px;
+  border-radius: 28px;
+  background: var(--background);
+  margin-bottom: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary);
-  box-shadow: 4px 4px 8px var(--dark-shadow), -4px -4px 8px var(--light-shadow);
+  box-shadow: var(--neumorph-shadow-sm);
+  position: absolute;
+  top: 3.5rem;
+  right: 3.5rem;
+  transition: all 0.5s ease;
+}
+
+.featureCard:hover .iconWrapper {
+  transform: rotate(15deg) scale(1.1);
+  color: white;
+  background: var(--primary);
+  box-shadow: 0 10px 30px rgba(255, 124, 48, 0.3);
+}
+
+.featureCard h3 {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+  text-align: left;
+}
+
+.featureCard p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  text-align: left;
+  max-width: 80%;
+}
+
+@media (max-width: 1100px) {
+  .featureGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .featureCard:nth-child(1),
+  .featureCard:nth-child(4) {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .featureGrid {
+    grid-template-columns: 1fr;
+  }
+  .featureCard:nth-child(1),
+  .featureCard:nth-child(4) {
+    grid-column: span 1;
+  }
+  .iconWrapper {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-bottom: 2rem;
+  }
 }
 
 /* Stats Section */
 .statsSection {
   padding: 100px 0;
-  background: var(--bg);
+  background: var(--background);
 }
 
 .statsGrid {
@@ -211,16 +369,17 @@
 }
 
 .statItem {
-  background: var(--bg);
+  background: var(--background);
   padding: 3rem 2rem;
-  border-radius: 30px;
-  box-shadow: 8px 8px 16px var(--dark-shadow), -8px -8px 16px var(--light-shadow);
+  border-radius: var(--radius-md);
+  box-shadow: var(--neumorph-shadow);
   transition: all 0.3s ease;
+  text-align: center;
 }
 
 .statItem:hover {
   transform: scale(0.98);
-  box-shadow: inset 6px 6px 12px var(--dark-shadow), inset -6px -6px 12px var(--light-shadow);
+  box-shadow: var(--neumorph-inset);
 }
 
 .statItem h3 {
@@ -238,16 +397,16 @@
 }
 
 .teamCard {
-  background: var(--bg);
+  background: var(--background);
   padding: 1.5rem;
-  border-radius: 35px;
-  box-shadow: 9px 9px 16px var(--dark-shadow), -9px -9px 16px var(--light-shadow);
+  border-radius: var(--radius-md);
+  box-shadow: var(--neumorph-shadow);
   transition: all 0.3s ease;
 }
 
 .teamCard:hover {
   transform: translateY(-10px);
-  box-shadow: 15px 15px 30px var(--dark-shadow), -15px -15px 30px var(--light-shadow);
+  box-shadow: var(--neumorph-shadow-lg);
 }
 
 .teamImage {
@@ -272,11 +431,53 @@
   margin-bottom: 0.3rem;
 }
 
-/* Vision Mission */
+/* Vision Mission - Innovative Split */
 .visionGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: 5rem;
+  align-items: stretch;
+}
+
+.visionGrid .glassCard {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 50px;
+  padding: 4.5rem;
+}
+
+.visionGrid .glassCard::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -20%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(255,124,48,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.visionGrid h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.visionGrid p {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .visionGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
 }
 
 /* Gallery */
@@ -288,9 +489,9 @@
 
 .galleryItem {
   padding: 1rem;
-  background: var(--bg);
-  border-radius: 30px;
-  box-shadow: 8px 8px 16px var(--dark-shadow), -8px -8px 16px var(--light-shadow);
+  background: var(--background);
+  border-radius: 35px;
+  box-shadow: var(--neumorph-shadow);
 }
 
 .galleryItem img {
@@ -298,17 +499,20 @@
   height: 250px;
   object-fit: cover;
   border-radius: 20px;
-  box-shadow: inset 4px 4px 8px var(--dark-shadow), inset -4px -4px 8px var(--light-shadow);
+  box-shadow: var(--neumorph-inset-sm);
 }
 
 /* CTA Footer */
 .ctaFooter {
-  background: var(--bg);
+  background: var(--background);
   margin: 100px 5%;
   padding: 8rem 2rem;
-  border-radius: 50px;
+  border-radius: var(--radius-lg);
   text-align: center;
-  box-shadow: 15px 15px 30px var(--dark-shadow), -15px -15px 30px var(--light-shadow);
+  box-shadow: var(--neumorph-shadow-lg);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .ctaFooter h2 {

@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useState } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 
 import { Target, Lightbulb } from "lucide-react";
@@ -9,8 +10,10 @@ import AboutCards from "../../components/AboutCards";
 import Stats from "../../components/Stats";
 import Team from "../../components/Team";
 import LifeAtSoftnova from "../../components/LifeAtSoftnova";
+import EnrollModal from "../../components/EnrollModal/EnrollModal";
 
 const AboutPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <main className={styles.aboutPage}>
@@ -18,40 +21,47 @@ const AboutPage = () => {
       {/* 1. Hero Section */}
       <AboutHero />
 
-      {/* 2. About Softnova (Split Layout) */}
+      {/* Background Blobs */}
+      <div className={styles.blob1}></div>
+      <div className={styles.blob2}></div>
+      <div className={styles.blob3}></div>
+
+      {/* 2. About Softnova (Split Layout in Neumorphic Box) */}
       <section className={styles.section}>
-        <div className={styles.aboutSplit}>
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className={styles.aboutText}
-          >
-            <h2>Transforming Tech Education</h2>
-            <p>
-              At Softnova Academy, we believe that traditional education often falls short in preparing students for the fast-paced tech industry. That's why we've built a curriculum that focuses on practical, real-world skills.
-            </p>
-            <p>
-              Our mission is to empower the next generation of software engineers with the tools, knowledge, and mentorship they need to build innovative products and shape the future of technology.
-            </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className={styles.aboutImageWrapper}
-          >
-            <video
-              src="/gallery/video.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className={styles.aboutVideo}
-            />
-          </motion.div>
+        <div className={styles.aboutContainer}>
+          <div className={styles.aboutSplit}>
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className={styles.aboutText}
+            >
+              <h2>Transforming Tech Education</h2>
+              <p>
+                At Softnova Academy, we believe that traditional education often falls short in preparing students for the fast-paced tech industry. That's why we've built a curriculum that focuses on practical, real-world skills.
+              </p>
+              <p>
+                Our mission is to empower the next generation of software engineers with the tools, knowledge, and mentorship they need to build innovative products and shape the future of technology.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className={styles.aboutImageWrapper}
+            >
+              <video
+                src="/gallery/video.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className={styles.aboutVideo}
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -119,14 +129,24 @@ const AboutPage = () => {
           Join the ranks of top-tier developers. The future is waiting for you.
         </p>
         <motion.button
+          onClick={() => setIsModalOpen(true)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className={styles.ctaButton}
-          style={{ background: "white", color: "var(--primary-orange)", zIndex: 1 }}
+          style={{ 
+            background: "white", 
+            color: "var(--primary-orange)", 
+            zIndex: 1,
+            display: "inline-block",
+            textDecoration: "none",
+            textAlign: "center"
+          }}
         >
           Enroll Now
         </motion.button>
       </motion.section>
+
+      <EnrollModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </main>
   );
 };

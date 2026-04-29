@@ -1,0 +1,165 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.modal {
+  background: #faf5f2;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 40px;
+  padding: 3rem;
+  position: relative;
+ 
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: #f0f2f5;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 4px 4px 10px #d1d9e6, -4px -4px 10px #ffffff;
+  color: #636e72;
+  transition: all 0.3s ease;
+}
+
+.closeBtn:hover {
+  box-shadow: inset 4px 4px 8px #d1d9e6, inset -4px -4px 8px #ffffff;
+  color: #ff7c30;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.header h2 {
+  font-size: 2rem;
+  color: #2d3436;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  color: #636e72;
+  font-size: 0.95rem;
+}
+
+.inputGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.inputGroup label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #2d3436;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.inputGroup label svg {
+  color: #ff7c30;
+}
+
+.inputGroup input,
+.inputGroup select,
+.inputGroup textarea {
+  background: #faf5f2;
+  border: none;
+  border-radius: 15px;
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #2d3436;
+  box-shadow: inset 5px 5px 10px #d1d9e6, inset -5px -5px 10px #ffffff;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.inputGroup select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ff7c30' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+}
+
+.submitBtn {
+  margin-top: 2.5rem;
+  width: 100%;
+  padding: 1.1rem;
+  background: #ff7c30;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+  transition: all 0.3s ease;
+}
+
+.submitBtn:hover {
+  background: #e66a20;
+}
+
+.successMessage {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.successMessage h2 {
+  margin-top: 1.5rem;
+  font-size: 1.8rem;
+  color: #2d3436;
+}
+
+.successMessage p {
+  color: #636e72;
+  margin-top: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .inputGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal {
+    padding: 2rem;
+    border-radius: 30px;
+  }
+}

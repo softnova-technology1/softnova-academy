@@ -49,12 +49,11 @@ export default function AboutCards() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={`${styles.glassCard} ${styles.featureCard}`}
-            whileHover={{ y: -10 }}
+            className={styles.featureCard}
           >
             <div className={styles.iconWrapper}>{feature.icon}</div>
-            <h3 style={{ fontSize: "1.5rem", fontWeight: "700" }}>{feature.title}</h3>
-            <p style={{ color: "var(--text-muted)", lineHeight: "1.6" }}>
+            <h3>{feature.title}</h3>
+            <p>
               {feature.desc}
             </p>
           </motion.div>

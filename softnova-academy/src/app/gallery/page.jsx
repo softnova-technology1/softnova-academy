@@ -120,6 +120,11 @@ export default function StadiumGallery() {
 
   return (
     <main className={styles.galleryPage} ref={containerRef}>
+        {/* Background Blobs */}
+        <div className={styles.blob1}></div>
+        <div className={styles.blob2}></div>
+        <div className={styles.blob3}></div>
+
         {/* Lightbox Modal */}
         <AnimatePresence>
           {selectedImg && (

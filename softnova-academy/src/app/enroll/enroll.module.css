@@ -1,0 +1,202 @@
+.enrollPage {
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  padding: 4rem 1rem;
+  position: relative;
+  overflow: hidden;
+  color: #444;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #2d3436;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+}
+
+.header p {
+  font-size: 1.1rem;
+  color: #636e72;
+}
+
+/* Neumorphic Form Card */
+.formCard {
+  background: #f0f2f5;
+  border-radius: 40px;
+  padding: 3.5rem;
+  box-shadow: 20px 20px 60px #d1d9e6, -20px -20px 60px #ffffff;
+}
+
+.inputGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .inputGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .formCard {
+    padding: 2rem;
+  }
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.inputGroup:last-child {
+  grid-column: 1 / -1;
+}
+
+.inputGroup label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #2d3436;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.inputGroup label svg {
+  color: #ff7c30;
+}
+
+.inputGroup input,
+.inputGroup select,
+.inputGroup textarea {
+  background: #f0f2f5;
+  border: none;
+  border-radius: 15px;
+  padding: 1.2rem;
+  font-size: 1rem;
+  color: #2d3436;
+  box-shadow: inset 6px 6px 12px #d1d9e6, inset -6px -6px 12px #ffffff;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus,
+.inputGroup textarea:focus {
+  box-shadow: inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #ffffff;
+}
+
+.inputGroup select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ff7c30' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.2rem center;
+  background-size: 1.2rem;
+}
+
+/* Submit Button */
+.submitBtn {
+  margin-top: 3rem;
+  width: 100%;
+  padding: 1.2rem;
+  background: #ff7c30;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  box-shadow: 10px 10px 20px #d1d9e6, -10px -10px 20px #ffffff;
+  transition: all 0.3s ease;
+}
+
+.submitBtn:hover {
+  background: #e66a20;
+  box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;
+}
+
+.submitBtn:active {
+  box-shadow: inset 5px 5px 10px #bf6025, inset -5px -5px 10px #ff983b;
+}
+
+/* Success Message */
+.successMessage {
+  text-align: center;
+  padding: 2rem;
+}
+
+.successMessage h2 {
+  margin-top: 1.5rem;
+  font-size: 2rem;
+  color: #2d3436;
+}
+
+.successMessage p {
+  margin-top: 1rem;
+  color: #636e72;
+  margin-bottom: 2.5rem;
+}
+
+.backBtn {
+  background: #f0f2f5;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  font-weight: 600;
+  color: #ff7c30;
+  cursor: pointer;
+  box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+  transition: all 0.3s ease;
+}
+
+.backBtn:hover {
+  box-shadow: 4px 4px 8px #d1d9e6, -4px -4px 8px #ffffff;
+}
+
+.footerInfo {
+  margin-top: 3rem;
+  text-align: center;
+  color: #95a5a6;
+  font-size: 0.9rem;
+}
+
+/* Background Blobs */
+.blob1 {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,124,48,0.1) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.blob2 {
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,124,48,0.05) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  z-index: 1;
+}

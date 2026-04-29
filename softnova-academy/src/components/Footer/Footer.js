@@ -7,6 +7,11 @@ import styles from './Footer.module.css';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    alert("Thank you for subscribing!");
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -40,11 +45,11 @@ const Footer = () => {
           <div className={styles.linksCol}>
             <h4 className={styles.heading}>Home</h4>
             <ul className={styles.linkList}>
-              <li><Link href="/benefits">Benefits</Link></li>
+              <li><Link href="/#benefits">Benefits</Link></li>
               <li><Link href="/course">Our Courses</Link></li>
-              <li><Link href="/faq">Our FAQ</Link></li>
+              <li><Link href="/#faq">Our FAQ</Link></li>
               <li><Link href="/gallery">Gallery</Link></li>
-              <li><Link href="/courses">Courses</Link></li>
+              <li><Link href="/course">Courses</Link></li>
             </ul>
           </div>
 
@@ -52,8 +57,8 @@ const Footer = () => {
           <div className={styles.linksCol}>
             <h4 className={styles.heading}>About Us</h4>
             <ul className={styles.linkList}>
-              <li><Link href="/achievements">Achievement</Link></li>
-              <li><Link href="/goals">Our Goals</Link></li>
+              <li><Link href="/#achievements">Achievement</Link></li>
+              <li><Link href="/#about">Our Goals</Link></li>
               <li><Link href="/intership">Internship</Link></li>
               <li><Link href="/contact-us">Contact Us</Link></li>
             </ul>
@@ -63,8 +68,8 @@ const Footer = () => {
           <div className={styles.newsletterCol}>
             <h4 className={styles.heading}>Stay Updated</h4>
             <p className={styles.newsletterText}>Subscribe to get the latest updates on courses and workshops.</p>
-            <form className={styles.newsletterForm} onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="Your email address" className={styles.input} suppressHydrationWarning />
+            <form className={styles.newsletterForm} onSubmit={handleSubscribe}>
+              <input type="email" placeholder="Your email address" className={styles.input} suppressHydrationWarning required />
               <button type="submit" className={styles.subscribeBtn} suppressHydrationWarning>Join</button>
             </form>
             <div className={styles.socials}>

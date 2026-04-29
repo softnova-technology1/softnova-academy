@@ -133,7 +133,7 @@
 }
 
 .waveFill {
-  fill: #e0e5ec; /* Matches the background of the about page */
+  fill: var(--background, #FAF5F2);
 }
 
 @media (max-width: 968px) {

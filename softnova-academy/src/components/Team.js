@@ -14,12 +14,12 @@ const teamMembers = [
   {
     name: "Dharshika",
     role: "TL",
-    image: "/gallery/dharshi.jpg",
+    image: "/gallery/New.jpg",
   },
   {
     name: "Adhi",
     role: "Developer",
-    image: "/gallery/Adhi.jpg",
+    image: "/gallery/dev.jpg",
   },
 ];
 

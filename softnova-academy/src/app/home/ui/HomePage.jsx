@@ -1,3 +1,4 @@
+import Link from "next/link";
 import AboutSection from "./sections/AboutSection/AboutSection";
 import BenefitsSection from "./sections/BenefitsSection/BenefitsSection";
 import TestimonialsSection from "./sections/TestimonialsSection/TestimonialsSection";
@@ -89,13 +90,15 @@ export default function HomePage() {
               </div>
             </div>
 
-            <button className={styles.joinBtn} suppressHydrationWarning>Explore Courses</button>
+            <Link href="/course">
+              <button className={styles.joinBtn} suppressHydrationWarning>Explore Courses</button>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Rest of the page */}
-      <section className={styles.cardsSection}>
+      <section className={styles.cardsSection} id="achievements">
         <h2 className={styles.cardsTitle}>What You Will Get from Softnova Academy?</h2>
         <div className={styles.cardsGrid}>
           <div className={styles.featureCard}>
@@ -130,10 +133,16 @@ export default function HomePage() {
       </section>
 
       <main className={styles.main}>
-        <BenefitsSection />
-        <FAQSection />
+        <div id="benefits">
+          <BenefitsSection />
+        </div>
+        <div id="faq">
+          <FAQSection />
+        </div>
         <TestimonialsSection />
-        <AboutSection />
+        <div id="about">
+          <AboutSection />
+        </div>
       </main>
     </div>
   );

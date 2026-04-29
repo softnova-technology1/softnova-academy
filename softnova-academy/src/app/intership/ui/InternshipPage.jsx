@@ -39,21 +39,33 @@ const InternshipPage = () => {
     contactFormRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Thank you! Your message has been sent successfully.");
+  };
+
   return (
     <div className={styles.section}>
+      {/* Background Blobs */}
+      <div className={styles.blob1}></div>
+      <div className={styles.blob2}></div>
+      <div className={styles.blob3}></div>
+
       <div className={styles.container}>
-        <header className={styles.header}>
-          <h1 className={styles.heading}>Internship</h1>
-          <p className={styles.description}>
-            Internship Program kick start your tech career with our hands-on
-            internship programs designed for students and fresh graduates.
-            Gain real-world experience by working on live projects, guided 
-            by industry experts. Whether you're into web development, design,
-            digital marketing and software testing, our internship equips 
-            you with practical skills, portfolio-worthy work, and the
-            confidence to step into the professional world.
-          </p>
-        </header>
+        <section className={styles.hero}>
+          <div className={styles.heroCard}>
+            <h1 className={styles.heading}>Internship <br/> <span style={{ color: "var(--primary)" }}>Program</span></h1>
+            <p className={styles.description}>
+              Kick start your tech career with our hands-on
+              internship programs designed for students and fresh graduates.
+              Gain real-world experience by working on live projects, guided 
+              by industry experts. Whether you're into web development, design,
+              digital marketing or software testing, our internship equips 
+              you with practical skills, portfolio-worthy work, and the
+              confidence to step into the professional world.
+            </p>
+          </div>
+        </section>
 
         <div className={styles.grid}>
           {INTERNSHIPS.map((item, index) => (
@@ -83,22 +95,24 @@ const InternshipPage = () => {
         <section className={styles.contactSection} ref={contactFormRef}>
           <div className={styles.contactGrid}>
             <div className={styles.formWrapper}>
-              <div className={styles.row}>
-                <input type="text" placeholder="Enter First Name" className={styles.input} suppressHydrationWarning />
-                <input type="text" placeholder="Enter Last Name" className={styles.input} suppressHydrationWarning />
-              </div>
-              <div className={styles.row}>
-                <input type="email" placeholder="Enter your Email" className={styles.input} suppressHydrationWarning />
-                <input type="tel" placeholder="Enter Phone Number" className={styles.input} suppressHydrationWarning />
-              </div>
-              <select className={styles.select} suppressHydrationWarning>
-                <option value="">Please Select Your Course</option>
-                {INTERNSHIPS.map(course => (
-                  <option key={course.id} value={course.title}>{course.title}</option>
-                ))}
-              </select>
-              <textarea placeholder="Enter your Message here..." className={styles.textarea} suppressHydrationWarning></textarea>
-              <button className={styles.submitBtn} suppressHydrationWarning>Send Your Message</button>
+              <form onSubmit={handleSubmit}>
+                <div className={styles.row}>
+                  <input type="text" placeholder="Enter First Name" className={styles.input} suppressHydrationWarning required />
+                  <input type="text" placeholder="Enter Last Name" className={styles.input} suppressHydrationWarning required />
+                </div>
+                <div className={styles.row}>
+                  <input type="email" placeholder="Enter your Email" className={styles.input} suppressHydrationWarning required />
+                  <input type="tel" placeholder="Enter Phone Number" className={styles.input} suppressHydrationWarning required />
+                </div>
+                <select className={styles.select} suppressHydrationWarning required>
+                  <option value="">Please Select Your Course</option>
+                  {INTERNSHIPS.map(course => (
+                    <option key={course.id} value={course.title}>{course.title}</option>
+                  ))}
+                </select>
+                <textarea placeholder="Enter your Message here..." className={styles.textarea} suppressHydrationWarning required></textarea>
+                <button type="submit" className={styles.submitBtn} suppressHydrationWarning>Send Your Message</button>
+              </form>
             </div>
 
             <aside className={styles.sidebar}>
