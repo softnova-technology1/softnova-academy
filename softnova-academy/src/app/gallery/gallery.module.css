@@ -1,0 +1,362 @@
+.scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #9dc0d4;
+  transform-origin: 0%;
+  z-index: 100000;
+}
+
+.galleryPage {
+  
+  min-height: 100vh;
+  padding: 100px 2%; /* Reduced horizontal padding to accommodate sticky sidebar */
+  font-family: 'Inter', sans-serif;
+  color: #594a42;
+  overflow-x: hidden;
+  display: flex; /* Added flex */
+  align-items: flex-start; /* Required for sticky */
+  gap: 20px;
+}
+
+.contentWrapper {
+  flex: 1;
+  width: 100%;
+}
+
+.bottomSpacer {
+  height: 250px; /* Large space for parallax to finish */
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 100px;
+  margin-top: 50px;
+}
+
+.tagline {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color:rgb(230, 81, 0);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  padding: 8px 20px;
+  border-radius: 50px;
+  background: #f6efe9;
+  box-shadow: 4px 4px 8px #dcd0c8, -4px -4px 8px #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.tagline:hover {
+  transform: scale(0.98);
+  box-shadow: inset 4px 4px 8px #dcd0c8, inset -4px -4px 8px #ffffff;
+  color: #ff6d00;
+}
+
+.tagline:active {
+  transform: scale(0.98);
+  box-shadow: inset 4px 4px 8px #dcd0c8, inset -4px -4px 8px #ffffff;
+}
+
+.header h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+  letter-spacing: -2px;
+  color: #594a42;
+}
+
+.header p {
+  font-size: 1.1rem;
+  color: #9b8c82;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Neumorphic Sidebar */
+.sidebarFilter {
+  position: sticky; /* Changed from fixed */
+  left: 20px;
+  top: 50vh;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  z-index: 1000;
+  background: #f6efe9;
+  padding: 25px 15px;
+  border-radius: 40px;
+  box-shadow: 9px 9px 16px #dcd0c8, -9px -9px 16px #ffffff;
+  flex-shrink: 0; /* Prevent sidebar from shrinking */
+}
+
+.filterIcon {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  position: relative;
+}
+
+.iconBox {
+  width: 55px;
+  height: 55px;
+  border-radius: 18px;
+  background: #f6efe9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 6px 6px 12px #dcd0c8, -6px -6px 12px #ffffff;
+  transition: all 0.3s ease;
+  color: #9b8c82;
+}
+
+.activeIcon .iconBox {
+  box-shadow: inset 4px 4px 8px #dcd0c8, inset -4px -4px 8px #ffffff;
+  color: rgb(230, 81, 0);
+  transform: scale(0.95);
+}
+
+.iconLabel {
+  position: absolute;
+  left: 75px;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #594a42;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  background: #f6efe9;
+  padding: 10px 18px;
+  border-radius: 15px;
+  box-shadow: 4px 4px 8px #dcd0c8, -4px -4px 8px #ffffff;
+}
+
+.filterIcon:hover .iconLabel {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stadium Grid */
+.stadiumGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Reduced to 3 columns for wider boxes */
+  gap: 3rem; /* Increased gap for a more breathable layout */
+  max-width: 1600px; /* Increased max-width */
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  will-change: transform; /* GPU Acceleration */
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  background: #f6efe9;
+  border-radius: 25% 0 25% 0; /* Bento-style rounded corners */
+  padding: 0; 
+  box-shadow: 12px 12px 24px #dcd0c8, -12px -12px 24px #ffffff;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 4px solid rgb(230, 81, 0); 
+  overflow: hidden;
+  display: block;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 15px 15px 30px #dcd0c8, -15px -15px 30px #ffffff;
+}
+
+.card:active {
+  box-shadow: inset 6px 6px 12px #dcd0c8, inset -6px -6px 12px #ffffff;
+}
+
+/* Removed fixed aspect ratios to respect original image dimensions */
+.tall, .short { aspect-ratio: auto; } 
+
+.cardImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 25% 0 25% 0;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover .cardImg {
+  transform: scale(1.05);
+}
+
+.cardOverlay {
+  position: absolute;
+  bottom: 60px; /* Moved up to stay inside the stadium curve */
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 0 20px;
+  opacity: 0;
+  transform: translateY(20px); /* Initial offset for animation */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover .cardOverlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cardTitle {
+  display: inline-block;
+  color: #594a42;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: #f6efe9;
+  padding: 8px 15px;
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px #dcd0c8, -4px -4px 8px #ffffff;
+}
+
+@media (max-width: 1024px) {
+  .galleryPage {
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 5%;
+  }
+  .stadiumGrid {
+    grid-template-columns: repeat(3, 1fr); /* Keep 3 columns for tablet/small laptop */
+    padding: 0 20px;
+    gap: 1.5rem;
+  }
+  .sidebarFilter {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 50px;
+    width: 100%;
+    max-width: 500px;
+  }
+  .iconLabel {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .stadiumGrid {
+    grid-template-columns: 1fr;
+  }
+  .header h1 {
+    font-size: 2.8rem;
+  }
+}
+
+/* Lightbox Modal Styles */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(224, 229, 236, 0.9);
+  backdrop-filter: blur(15px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #f6efe9;
+  box-shadow: 6px 6px 12px #dcd0c8, -6px -6px 12px #ffffff;
+  border: none;
+  color: #594a42;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10001;
+  transition: all 0.3s ease;
+}
+
+.closeBtn:hover {
+  transform: rotate(90deg) scale(1.1);
+  color: rgb(230, 81, 0);
+}
+
+.modalContent {
+  position: relative;
+  width: fit-content;
+  max-width: 90vw;
+  max-height: 90vh;
+  background: #f6efe9;
+  border-radius: 40px;
+  box-shadow: 20px 20px 40px #dcd0c8, -20px -20px 40px #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 15px;
+  border: 4px solid rgb(230, 81, 0); /* Premium Orange Border for Lightbox */
+}
+
+.fullImgWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: inset 6px 6px 12px #dcd0c8, inset -6px -6px 12px #ffffff;
+  background: #f6efe9;
+}
+
+.fullImg {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 70vh !important;
+  position: relative !important;
+  object-fit: contain;
+}
+
+.modalFooter {
+  padding-top: 30px;
+  text-align: center;
+}
+
+.modalFooter h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #594a42;
+  margin-bottom: 0.5rem;
+}
+
+.modalFooter span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #9dc0d4;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
