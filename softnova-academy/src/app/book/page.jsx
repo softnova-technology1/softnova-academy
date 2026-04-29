@@ -1,10 +1,10 @@
-export default function BookPage() {
-  return (
-    <div style={{ padding: '2rem 5%' }}>
-      <h1 style={{ marginBottom: '0.75rem' }}>Book</h1>
-      <p style={{ color: '#555', maxWidth: 900, lineHeight: 1.7 }}>
-        This is the Book page.
-      </p>
-    </div>
-  );
+import BookPage from "./ui/BookPage";
+
+export const metadata = {
+  title: "Bookstore | Softnova Academy",
+  description: "Explore the Softnova Academy bookstore. Get premium guides on UI/UX, Web Development, and more to accelerate your tech career.",
+};
+
+export default function Page() {
+  return <BookPage />;
 }

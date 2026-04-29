@@ -1,0 +1,312 @@
+.section {
+  min-height: 100vh;
+  background: var(--background);
+  padding: 0 0 120px 0; /* Reduced top padding for hero */
+  font-family: 'Outfit', sans-serif;
+}
+
+.heroSection {
+  padding: 120px 5% 0px; /* Removed bottom padding for books at bottom */
+  text-align: center;
+  background: var(--background);
+  position: relative;
+  overflow: hidden;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Background Blobs matching image 1 accurately */
+.heroSection::before, .heroSection::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: 1;
+  opacity: 0.1;
+}
+
+.heroSection::before {
+  top: -100px;
+  left: -200px;
+  background: var(--primary);
+}
+
+.heroSection::after {
+  bottom: -100px;
+  right: -200px;
+  background: #6c5ce7;
+}
+
+.heroContent {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  padding-top: 40px;
+}
+
+.heroTitle {
+  font-size: clamp(3.5rem, 9vw, 6.5rem);
+  font-weight: 900;
+  color: var(--foreground);
+  line-height: 1;
+  margin-bottom: 30px;
+  letter-spacing: -4px;
+}
+
+.heroSubtitle {
+  font-size: 1.4rem;
+  color: #636e72;
+  line-height: 1.6;
+  max-width: 650px;
+  margin: 0 auto 40px;
+  opacity: 0.8;
+}
+
+.btnGroup {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+.primaryBtn {
+  background: white;
+  color: #2d3436;
+  padding: 20px 50px;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.05), -10px -10px 30px var(--white);
+  transition: all 0.3s ease;
+}
+
+.secondaryBtn {
+  background: transparent;
+  color: var(--primary);
+  padding: 20px 50px;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border: 1px solid var(--primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* BOOK COMPOSITION STYLES */
+.heroImageContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.bookComposition {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.ideaBulb {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  z-index: 15;
+  animation: glow 3s ease-in-out infinite;
+}
+
+.bookStack {
+  position: absolute;
+  bottom: 0;
+  z-index: 5;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.openBookMain {
+  width: 100%;
+  max-width: 750px;
+  position: relative;
+  z-index: 10;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+}
+
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 10px #ff7c30); transform: translateX(-50%) translateY(0); }
+  50% { filter: drop-shadow(0 0 30px #ff7c30); transform: translateX(-50%) translateY(-10px); }
+}
+
+/* CARDS STYLES REFINEMENT */
+.collectionTitle {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 100px 0 60px;
+  color: var(--foreground);
+}
+
+/* 2-Column Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+}
+
+/* Horizontal Neumorphic Card */
+.card {
+  background: var(--background);
+  border-radius: 40px;
+  padding: 30px;
+  box-shadow: 20px 20px 60px var(--shadow-dark), -20px -20px 60px var(--shadow-light);
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255,255,255,0.7);
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 30px 30px 80px var(--shadow-dark), -30px -30px 80px var(--shadow-light);
+}
+
+/* Book Cover Area */
+.coverWrapper {
+  flex-shrink: 0;
+  width: 200px;
+  height: 300px;
+  background: var(--background);
+  border-radius: 20px;
+  box-shadow: inset 10px 10px 20px var(--shadow-dark), inset -10px -10px 20px var(--shadow-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.coverInner {
+  width: 80%;
+  height: 85%;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 10px 10px 25px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  justify-content: space-between;
+}
+
+.coverTitle {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #2d3436;
+}
+
+/* Info Side */
+.infoSide {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--foreground);
+  line-height: 1.2;
+}
+
+.author {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+  opacity: 0.8;
+}
+
+.rating {
+  display: flex;
+  gap: 4px;
+  color: #ffb800;
+  font-size: 1rem;
+}
+
+.stats {
+  font-size: 0.85rem;
+  color: #b2bec3;
+  margin-left: 8px;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #636e72;
+  margin: 10px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.seeBookBtn {
+  margin-top: 10px;
+  background: var(--background);
+  color: var(--primary);
+  border: 4px solid var(--background);
+  padding: 15px 40px;
+  border-radius: 40px;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+.seeBookBtn:hover {
+  color: white;
+  background: var(--primary);
+  box-shadow: inset 4px 4px 8px rgba(0,0,0,0.2);
+}
+
+.seeBookBtn:active {
+  box-shadow: inset 6px 6px 12px var(--shadow-dark), inset -6px -6px 12px var(--shadow-light);
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .seeBookBtn {
+    margin: 10px auto;
+  }
+  .infoSide {
+    align-items: center;
+  }
+}
