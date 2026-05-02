@@ -1,13 +1,83 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Link from "next/link";
 import AboutSection from "./sections/AboutSection/AboutSection";
 import BenefitsSection from "./sections/BenefitsSection/BenefitsSection";
 import TestimonialsSection from "./sections/TestimonialsSection/TestimonialsSection";
 import FAQSection from "./sections/FAQSection/FAQSection";
 import styles from "./HomePage.module.css";
+import FloatingElement from "@/components/FloatingElement";
+import Magnetic from "@/components/Magnetic";
+import ParticlesBackground from "@/components/ParticlesBackground";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function HomePage() {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      // Parallax effect on sections
+      gsap.utils.toArray(".gsap-parallax").forEach((section) => {
+        gsap.to(section, {
+          yPercent: 20,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      });
+
+      // Section Reveal: Fade + Upward Drift
+      gsap.utils.toArray(".gsap-reveal").forEach((elem) => {
+        gsap.fromTo(
+          elem,
+          { opacity: 0, y: 100 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: elem,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+
+      // Scale and Depth transitions
+      gsap.utils.toArray(".gsap-scale").forEach((elem) => {
+        gsap.fromTo(
+          elem,
+          { scale: 0.9, opacity: 0.8 },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 1,
+            ease: "expo.out",
+            scrollTrigger: {
+              trigger: elem,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className={styles.page}>
+    <div className={styles.page} ref={containerRef}>
       {/* SVG Gradients for Icons */}
       <svg style={{ width: 0, height: 0, position: 'absolute' }}>
         <defs>
@@ -20,14 +90,23 @@ export default function HomePage() {
 
       {/* PRODUCT DETAIL STYLE HERO SECTION */}
       <section className={styles.productHero}>
+        <ParticlesBackground />
         {/* Dynamic Liquid Blobs for background depth */}
-        <div className={styles.blob1}></div>
-        <div className={styles.blob2}></div>
-        <div className={styles.blob3}></div>
+        <FloatingElement yRange={[15, -15]} duration={6}>
+          <div className={styles.blob1}></div>
+        </FloatingElement>
+        <FloatingElement yRange={[-20, 20]} duration={7} delay={1}>
+          <div className={styles.blob2}></div>
+        </FloatingElement>
+        <FloatingElement yRange={[10, -10]} duration={5} delay={2}>
+          <div className={styles.blob3}></div>
+        </FloatingElement>
 
         {/* Top Header/Background */}
         <div className={styles.topYellowBg}>
-          <h1 className={styles.mainTitleUpper}>Softnova Academy</h1>
+          <FloatingElement yRange={[5, -5]} duration={4}>
+            <h1 className={styles.mainTitleUpper}>Softnova Academy</h1>
+          </FloatingElement>
         </div>
 
         {/* Main Central Glass Card */}
@@ -55,16 +134,21 @@ export default function HomePage() {
 
           {/* Center: Hero Image (Humans Learning) */}
           <div className={styles.cardCenter}>
-            <div className={styles.imageCircle}>
-              <img
-                src="/premium-learning.png"
-                alt="Students learning"
-                className={styles.learningImg}
-              />
-              {/* Spinning Rings around image */}
-              <div className={styles.ring1}></div>
-            </div>
-            <div className={styles.priceTag}>JOIN SOFTNOVA</div>
+            <FloatingElement yRange={[8, -8]} duration={5}>
+              <div className={styles.imageCircle}>
+                <img
+                  src="/premium-learning.png"
+                  alt="Students learning"
+                  className={styles.learningImg}
+                 
+                />
+                {/* Spinning Rings around image */}
+                <div className={styles.ring1}></div>
+              </div>
+            </FloatingElement>
+            <FloatingElement yRange={[-5, 5]} duration={4} delay={0.5}>
+              <div className={styles.priceTag}>JOIN SOFTNOVA</div>
+            </FloatingElement>
           </div>
 
           {/* Right: Tech Icons & Action */}
@@ -91,7 +175,9 @@ export default function HomePage() {
             </div>
 
             <Link href="/course">
-              <button className={styles.joinBtn} suppressHydrationWarning>Explore Courses</button>
+              <Magnetic strength={0.3}>
+                <button className={styles.joinBtn} suppressHydrationWarning>Explore Courses</button>
+              </Magnetic>
             </Link>
           </div>
         </div>
@@ -101,46 +187,56 @@ export default function HomePage() {
       <section className={styles.cardsSection} id="achievements">
         <h2 className={styles.cardsTitle}>What You Will Get from Softnova Academy?</h2>
         <div className={styles.cardsGrid}>
-          <div className={styles.featureCard}>
-            <div className={styles.cardIconRow}>
-              <svg viewBox="0 0 24 24" width="40" height="40" stroke="#ff7c30" strokeWidth="2" fill="none"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" /></svg>
+          <FloatingElement yRange={[10, -10]} duration={4.5} delay={0}>
+            <div className={styles.featureCard}>
+              <div className={styles.cardIconRow}>
+                <svg viewBox="0 0 24 24" width="40" height="40" stroke="#ff7c30" strokeWidth="2" fill="none"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" /></svg>
+              </div>
+              <h4>Challenging Projects</h4>
+              <p>Work on real-world projects that elevate your design and dev portfolio to the next level.</p>
             </div>
-            <h4>Challenging Projects</h4>
-            <p>Work on real-world projects that elevate your design and dev portfolio to the next level.</p>
-          </div>
-          <div className={styles.featureCard}>
-            <div className={styles.cardIconRow}>
-              <svg viewBox="0 0 24 24" width="40" height="40" stroke="#ff7c30" strokeWidth="2" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
+          </FloatingElement>
+          <FloatingElement yRange={[12, -12]} duration={5.2} delay={0.3}>
+            <div className={styles.featureCard}>
+              <div className={styles.cardIconRow}>
+                <svg viewBox="0 0 24 24" width="40" height="40" stroke="#ff7c30" strokeWidth="2" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
+              </div>
+              <h4>Placement Support</h4>
+              <p>Guaranteed guidance for securing high-paying roles in the IT and software testing fields.</p>
             </div>
-            <h4>Placement Support</h4>
-            <p>Guaranteed guidance for securing high-paying roles in the IT and software testing fields.</p>
-          </div>
-          <div className={styles.featureCard}>
-            <div className={styles.cardIconRow}>
-              <svg viewBox="0 0 24 24" width="40" height="40" stroke="#ff7c30" strokeWidth="2" fill="none"><path d="M3 21h18M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7M4 21v-7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7" /></svg>
+          </FloatingElement>
+          <FloatingElement yRange={[8, -8]} duration={4.8} delay={0.6}>
+            <div className={styles.featureCard}>
+              <div className={styles.cardIconRow}>
+                <svg viewBox="0 0 24 24" width="40" height="40" stroke="#ff7c30" strokeWidth="2" fill="none"><path d="M3 21h18M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7M4 21v-7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7" /></svg>
+              </div>
+              <h4>Modern Workspace</h4>
+              <p>Access our premium digital laboratories and design tools to sharpen your technical skills.</p>
             </div>
-            <h4>Modern Workspace</h4>
-            <p>Access our premium digital laboratories and design tools to sharpen your technical skills.</p>
-          </div>
-          <div className={styles.featureCard}>
-            <div className={styles.cardIconRow}>
-              <svg viewBox="0 0 24 24" width="40" height="40" stroke="#ff7c30" strokeWidth="2" fill="none"><path d="M18 8a3 3 0 0 1-3 3H5a3 3 0 0 1 0-6h10a3 3 0 0 1 3 3z" /><path d="M10 2c0 2 2 2 2 4s-2 2-2 4" /><path d="M14 2c0 2 2 2 2 4s-2 2-2 4" /><path d="M18 11v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V11" /></svg>
+          </FloatingElement>
+          <FloatingElement yRange={[15, -15]} duration={5.5} delay={0.9}>
+            <div className={styles.featureCard}>
+              <div className={styles.cardIconRow}>
+                <svg viewBox="0 0 24 24" width="40" height="40" stroke="#ff7c30" strokeWidth="2" fill="none"><path d="M18 8a3 3 0 0 1-3 3H5a3 3 0 0 1 0-6h10a3 3 0 0 1 3 3z" /><path d="M10 2c0 2 2 2 2 4s-2 2-2 4" /><path d="M14 2c0 2 2 2 2 4s-2 2-2 4" /><path d="M18 11v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V11" /></svg>
+              </div>
+              <h4>Interactive Sessions</h4>
+              <p>Live doubt solving, peer reviews, and interactive Q&A sessions ensuring maximum retention.</p>
             </div>
-            <h4>Interactive Sessions</h4>
-            <p>Live doubt solving, peer reviews, and interactive Q&A sessions ensuring maximum retention.</p>
-          </div>
+          </FloatingElement>
         </div>
       </section>
 
       <main className={styles.main}>
-        <div id="benefits">
+        <div id="benefits" className="gsap-reveal">
           <BenefitsSection />
         </div>
-        <div id="faq">
+        <div id="faq" className="gsap-scale">
           <FAQSection />
         </div>
-        <TestimonialsSection />
-        <div id="about">
+        <div className="gsap-parallax">
+          <TestimonialsSection />
+        </div>
+        <div id="about" className="gsap-reveal">
           <AboutSection />
         </div>
       </main>
