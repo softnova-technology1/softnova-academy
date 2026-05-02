@@ -9,17 +9,17 @@ const teamMembers = [
   {
     name: "Mahetha",
     role: "HR",
-    image: "/gallery/Akka.png",
+    image: "/Images/gallery/Akka.png",
   },
   {
     name: "Dharshika",
     role: "TL",
-    image: "/gallery/New.jpg",
+    image: "/Images/gallery/New.jpg",
   },
   {
     name: "Adhi",
     role: "Developer",
-    image: "/gallery/dev.jpg",
+    image: "/Images/gallery/dev.jpg",
   },
 ];
 

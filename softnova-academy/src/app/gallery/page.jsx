@@ -21,15 +21,15 @@ const CATEGORIES = [
 ];
 
 const GALLERY_IMAGES = [
-  { id: 1, title: "Our Modern Campus", category: "campus", img: "/gallery/classroom1.png", size: "tall" },
-  { id: 2, title: "Student Collaboration", category: "students", img: "/gallery/celebration1.png", size: "short" },
-  { id: 3, title: "Annual Tech Event", category: "events", img: "/gallery/event1.png", size: "tall" },
-  { id: 4, title: "Learning in Progress", category: "students", img: "/gallery/Akka.png", size: "short" },
-  { id: 5, title: "Team Leadership", category: "students", img: "/gallery/dharshi.jpg", size: "tall" },
-  { id: 6, title: "Dev Spirit", category: "events", img: "/gallery/dev.jpg", size: "short" },
-  { id: 7, title: "Tech Workshop", category: "events", img: "/gallery/classroom1.png", size: "tall" },
-  { id: 8, title: "Vibrant Campus", category: "campus", img: "/gallery/celebration1.png", size: "short" },
-  { id: 9, title: "Student Success", category: "students", img: "/gallery/event1.png", size: "tall" },
+  { id: 1, title: "Our Modern Campus", category: "campus", img: "/Images/gallery/classroom1.png", size: "tall" },
+  { id: 2, title: "Student Collaboration", category: "students", img: "/Images/gallery/celebration1.png", size: "short" },
+  { id: 3, title: "Annual Tech Event", category: "events", img: "/Images/gallery/event1.png", size: "tall" },
+  { id: 4, title: "Learning in Progress", category: "students", img: "/Images/gallery/Akka.png", size: "short" },
+  { id: 5, title: "Team Leadership", category: "students", img: "/Images/gallery/dharshi.jpg", size: "tall" },
+  { id: 6, title: "Dev Spirit", category: "events", img: "/Images/gallery/dev.jpg", size: "short" },
+  { id: 7, title: "Tech Workshop", category: "events", img: "/Images/gallery/classroom1.png", size: "tall" },
+  { id: 8, title: "Vibrant Campus", category: "campus", img: "/Images/gallery/celebration1.png", size: "short" },
+  { id: 9, title: "Student Success", category: "students", img: "/Images/gallery/event1.png", size: "tall" },
 ];
 
 const Column = ({ images, y, onImageClick }) => {

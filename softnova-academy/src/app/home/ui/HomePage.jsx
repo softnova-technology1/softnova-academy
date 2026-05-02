@@ -20,33 +20,75 @@ export default function HomePage() {
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      // Parallax effect on sections
-      gsap.utils.toArray(".gsap-parallax").forEach((section) => {
-        gsap.to(section, {
-          yPercent: 20,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-      });
 
-      // Section Reveal: Fade + Upward Drift
-      gsap.utils.toArray(".gsap-reveal").forEach((elem) => {
+      // --- Fade from LEFT (repeats every scroll in/out) ---
+      gsap.utils.toArray(".gsap-fade-left").forEach((elem) => {
         gsap.fromTo(
           elem,
-          { opacity: 0, y: 100 },
+          { opacity: 0, x: -80 },
           {
-            opacity: 1,
-            y: 0,
-            duration: 1.5,
-            ease: "power3.out",
+            opacity: 1, x: 0,
+            duration: 0.8,
+            ease: "power2.out",
             scrollTrigger: {
               trigger: elem,
-              start: "top 80%",
+              start: "top 95%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+
+      // --- Fade from RIGHT (repeats every scroll in/out) ---
+      gsap.utils.toArray(".gsap-fade-right").forEach((elem) => {
+        gsap.fromTo(
+          elem,
+          { opacity: 0, x: 80 },
+          {
+            opacity: 1, x: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: elem,
+              start: "top 95%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+
+      // --- Fade UP (for titles, headings etc.) ---
+      gsap.utils.toArray(".gsap-fade-up").forEach((elem) => {
+        gsap.fromTo(
+          elem,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1, y: 0,
+            duration: 0.7,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: elem,
+              start: "top 95%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+
+      // --- Staggered CARDS (each card pops in one by one) ---
+      gsap.utils.toArray(".gsap-stagger-group").forEach((group) => {
+        const cards = group.querySelectorAll(".gsap-card");
+        gsap.fromTo(
+          cards,
+          { opacity: 0, y: 60, scale: 0.93 },
+          {
+            opacity: 1, y: 0, scale: 1,
+            duration: 0.6,
+            ease: "power2.out",
+            stagger: 0.12,
+            scrollTrigger: {
+              trigger: group,
+              start: "top 95%",
               toggleActions: "play none none reverse",
             },
           }
@@ -59,9 +101,8 @@ export default function HomePage() {
           elem,
           { scale: 0.9, opacity: 0.8 },
           {
-            scale: 1,
-            opacity: 1,
-            duration: 1,
+            scale: 1, opacity: 1,
+            duration: 1.2,
             ease: "expo.out",
             scrollTrigger: {
               trigger: elem,
@@ -71,6 +112,7 @@ export default function HomePage() {
           }
         );
       });
+
     }, containerRef);
 
     return () => ctx.revert();
@@ -91,16 +133,18 @@ export default function HomePage() {
       {/* PRODUCT DETAIL STYLE HERO SECTION */}
       <section className={styles.productHero}>
         <ParticlesBackground />
-        {/* Dynamic Liquid Blobs for background depth */}
-        <FloatingElement yRange={[15, -15]} duration={6}>
-          <div className={styles.blob1}></div>
-        </FloatingElement>
-        <FloatingElement yRange={[-20, 20]} duration={7} delay={1}>
-          <div className={styles.blob2}></div>
-        </FloatingElement>
-        <FloatingElement yRange={[10, -10]} duration={5} delay={2}>
-          <div className={styles.blob3}></div>
-        </FloatingElement>
+        {/* Dynamic Liquid Blobs - absolute so they don't push flex children */}
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', overflow: 'hidden' }}>
+          <FloatingElement yRange={[15, -15]} duration={6}>
+            <div className={styles.blob1}></div>
+          </FloatingElement>
+          <FloatingElement yRange={[-20, 20]} duration={7} delay={1}>
+            <div className={styles.blob2}></div>
+          </FloatingElement>
+          <FloatingElement yRange={[10, -10]} duration={5} delay={2}>
+            <div className={styles.blob3}></div>
+          </FloatingElement>
+        </div>
 
         {/* Top Header/Background */}
         <div className={styles.topYellowBg}>
@@ -137,7 +181,7 @@ export default function HomePage() {
             <FloatingElement yRange={[8, -8]} duration={5}>
               <div className={styles.imageCircle}>
                 <img
-                  src="/premium-learning.png"
+                  src="/Images/premium-learning.png"
                   alt="Students learning"
                   className={styles.learningImg}
                  
@@ -185,10 +229,10 @@ export default function HomePage() {
 
       {/* Rest of the page */}
       <section className={styles.cardsSection} id="achievements">
-        <h2 className={styles.cardsTitle}>What You Will Get from Softnova Academy?</h2>
-        <div className={styles.cardsGrid}>
+        <h2 className={`${styles.cardsTitle} gsap-fade-up`}>What You Will Get from Softnova Academy?</h2>
+        <div className={`${styles.cardsGrid} gsap-stagger-group`}>
           <FloatingElement yRange={[10, -10]} duration={4.5} delay={0}>
-            <div className={styles.featureCard}>
+            <div className={`${styles.featureCard} gsap-card`}>
               <div className={styles.cardIconRow}>
                 <svg viewBox="0 0 24 24" width="40" height="40" stroke="#ff7c30" strokeWidth="2" fill="none"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" /></svg>
               </div>
@@ -197,7 +241,7 @@ export default function HomePage() {
             </div>
           </FloatingElement>
           <FloatingElement yRange={[12, -12]} duration={5.2} delay={0.3}>
-            <div className={styles.featureCard}>
+            <div className={`${styles.featureCard} gsap-card`}>
               <div className={styles.cardIconRow}>
                 <svg viewBox="0 0 24 24" width="40" height="40" stroke="#ff7c30" strokeWidth="2" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
               </div>
@@ -206,7 +250,7 @@ export default function HomePage() {
             </div>
           </FloatingElement>
           <FloatingElement yRange={[8, -8]} duration={4.8} delay={0.6}>
-            <div className={styles.featureCard}>
+            <div className={`${styles.featureCard} gsap-card`}>
               <div className={styles.cardIconRow}>
                 <svg viewBox="0 0 24 24" width="40" height="40" stroke="#ff7c30" strokeWidth="2" fill="none"><path d="M3 21h18M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7M4 21v-7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7" /></svg>
               </div>
@@ -215,7 +259,7 @@ export default function HomePage() {
             </div>
           </FloatingElement>
           <FloatingElement yRange={[15, -15]} duration={5.5} delay={0.9}>
-            <div className={styles.featureCard}>
+            <div className={`${styles.featureCard} gsap-card`}>
               <div className={styles.cardIconRow}>
                 <svg viewBox="0 0 24 24" width="40" height="40" stroke="#ff7c30" strokeWidth="2" fill="none"><path d="M18 8a3 3 0 0 1-3 3H5a3 3 0 0 1 0-6h10a3 3 0 0 1 3 3z" /><path d="M10 2c0 2 2 2 2 4s-2 2-2 4" /><path d="M14 2c0 2 2 2 2 4s-2 2-2 4" /><path d="M18 11v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V11" /></svg>
               </div>
@@ -227,16 +271,16 @@ export default function HomePage() {
       </section>
 
       <main className={styles.main}>
-        <div id="benefits" className="gsap-reveal">
+        <div id="benefits" className="gsap-fade-left">
           <BenefitsSection />
         </div>
-        <div id="faq" className="gsap-scale">
+        <div id="faq" className="gsap-fade-right">
           <FAQSection />
         </div>
-        <div className="gsap-parallax">
+        <div className="gsap-fade-left">
           <TestimonialsSection />
         </div>
-        <div id="about" className="gsap-reveal">
+        <div id="about" className="gsap-fade-right">
           <AboutSection />
         </div>
       </main>

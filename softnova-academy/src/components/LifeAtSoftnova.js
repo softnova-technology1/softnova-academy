@@ -7,25 +7,25 @@ import styles from './LifeAtSoftnova.module.css';
 const galleryItems = [
   { 
     id: 1, 
-    src: '/about/gallery_life_1.png', 
+    src: '/Images/about/gallery_life_1.png', 
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-his-laptop-34448-large.mp4',
     delay: 0.1 
   },
   { 
     id: 2, 
-    src: '/about/gallery_life_2.png', 
+    src: '/Images/about/gallery_life_2.png', 
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-young-woman-working-on-a-laptop-in-a-library-41009-large.mp4',
     delay: 0.2 
   },
   { 
     id: 3, 
-    src: '/about/gallery_life_3.png', 
+    src: '/Images/about/gallery_life_3.png', 
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-teamwork-in-a-modern-office-42502-large.mp4',
     delay: 0.3 
   },
   { 
     id: 4, 
-    src: '/about/gallery_life_4.png', 
+    src: '/Images/about/gallery_life_4.png', 
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-man-working-on-a-laptop-in-a-coffee-shop-42284-large.mp4',
     delay: 0.4 
   },

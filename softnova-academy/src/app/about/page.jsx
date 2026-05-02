@@ -52,7 +52,7 @@ const AboutPage = () => {
               className={styles.aboutImageWrapper}
             >
               <video
-                src="/gallery/video.mp4"
+                src="/Images/gallery/video.mp4"
                 autoPlay
                 loop
                 muted
