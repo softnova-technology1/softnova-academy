@@ -1,23 +1,26 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { 
-  ArrowRight, 
-  Code, 
-  PenTool, 
-  Layout, 
-  Terminal, 
-  Database, 
+import {
+  ArrowRight,
+  Code,
+  PenTool,
+  Layout,
+  Terminal,
+  Database,
   Layers,
   Monitor,
   Globe,
   Zap,
-  Users
+  Users,
+  MessageSquare,
+  Mail
 } from "lucide-react";
+import { Instagram } from "../../components/Icons";
 import styles from "./course.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -223,6 +226,7 @@ const COURSES = [
 
 export default function CoursePage() {
   const containerRef = useRef(null);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -232,6 +236,26 @@ export default function CoursePage() {
         y: -30,
         duration: 0.5,
         ease: "power2.out",
+        clearProps: "all"
+      });
+
+      // Popup Animation
+      gsap.from(".gsap-popup-animate", {
+        opacity: 0,
+        y: 50,
+        x: 20,
+        duration: 0.6,
+        delay: 0.8,
+        ease: "back.out(1.5)",
+        clearProps: "all"
+      });
+
+      // Collapsed Badge Animation
+      gsap.from(".gsap-badge-animate", {
+        opacity: 0,
+        scale: 0.5,
+        duration: 0.4,
+        ease: "back.out(1.5)",
         clearProps: "all"
       });
 
@@ -261,7 +285,7 @@ export default function CoursePage() {
           <h1>Upgrade Your Skills for a Successful Digital Career</h1>
           <p>
             Discover professional courses designed to help you gain practical experience and industry-ready technical skills.
-Learn through real-time projects, expert mentorship, and an interactive learning environment.
+            Learn through real-time projects, expert mentorship, and an interactive learning environment.
           </p>
         </header>
 
@@ -271,10 +295,10 @@ Learn through real-time projects, expert mentorship, and an interactive learning
               {/* Left Image Section */}
               <div className={styles.cardLeft}>
                 <div className={styles.imageContainer}>
-                  <Image 
-                    src={course.image} 
-                    alt={course.title} 
-                    fill 
+                  <Image
+                    src={course.image}
+                    alt={course.title}
+                    fill
                     className={styles.courseImg}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     priority={index === 0}
@@ -315,6 +339,51 @@ Learn through real-time projects, expert mentorship, and an interactive learning
           ))}
         </div>
       </div>
+
+      {/* Split Horizontal Floating Popup or Collapsed Floating Badge */}
+      {!isCollapsed ? (
+        <div className={`${styles.onlinePopup} gsap-popup-animate`}>
+          {/* Left Column - Image & Logo Overlay */}
+          <div className={styles.popupVisual}>
+            <Image 
+              src="/Images/student-online-learning.png"
+              alt="Online Courses"
+              fill
+              className={styles.popupImage}
+              sizes="180px"
+            />
+          </div>
+
+          {/* Right Column - Text & CTA Button */}
+          <div className={styles.popupDetails}>
+            <button 
+              className={styles.closePopup} 
+              onClick={() => setIsCollapsed(true)}
+              aria-label="Collapse popup"
+            >
+              &times;
+            </button>
+            <h3>Online Classes Available</h3>
+            <p>
+              Join interactive online classes with 1-on-1 mentorship.
+            </p>
+            <Link href="/contact-us" className={styles.popupBtn}>
+              <span>Contact Us</span>
+              <span className={styles.btnArrowCircle}>
+                <ArrowRight size={13} />
+              </span>
+            </Link>
+          </div>
+        </div>
+      ) : (
+        <button 
+          className={`${styles.collapsedBadge} gsap-badge-animate`} 
+          onClick={() => setIsCollapsed(false)}
+          aria-label="Expand online courses popup"
+        >
+          <Globe size={22} className={styles.pulseIcon} />
+        </button>
+      )}
     </main>
   );
 }
